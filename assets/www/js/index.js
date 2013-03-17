@@ -16,17 +16,35 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
+var storage = window.localStorage;
 function scanQR() {
     window.plugins.barcodeScanner.scan( function(result) {
-        alert("We got a barcode\n" +
+        /*alert("We got a barcode\n" +
                   "Result: " + result.text + "\n" +
                   "Format: " + result.format + "\n" +
-                  "Cancelled: " + result.cancelled);
+                  "Cancelled: " + result.cancelled);*/
+                storeHash(result.text);
+                refreshFrame();
             }, function(error) {
                 alert("Scanning failed: " + error);
             }
         );
+}
+
+function storeHash(value) {
+    storage.setItem("hash", value);
+}
+
+function refreshFrame() {
+    var hash = storage.getItem("hash");
+    var url = "http://0.webrunner.duapp.com/read_android/?hash=" + hash;
+    //url = "http://www.douban.com"
+    $("#iframeContent").attr("src", "");
+    $("#iframeContent").attr("src", url);
+}
+
+function cleanHash() {
+    window.localStorage.clear();
 }
 
 var app = {
@@ -61,5 +79,7 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+
+        $("[data-role=header]").fixedtoolbar({ tapToggle: false });
     }
 };
