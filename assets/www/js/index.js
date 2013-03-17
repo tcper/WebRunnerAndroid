@@ -16,6 +16,19 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
+function scanQR() {
+    window.plugins.barcodeScanner.scan( function(result) {
+        alert("We got a barcode\n" +
+                  "Result: " + result.text + "\n" +
+                  "Format: " + result.format + "\n" +
+                  "Cancelled: " + result.cancelled);
+            }, function(error) {
+                alert("Scanning failed: " + error);
+            }
+        );
+}
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -34,6 +47,9 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+		
+		
+
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
