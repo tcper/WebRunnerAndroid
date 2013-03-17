@@ -80,6 +80,6 @@ var app = {
 
         console.log('Received Event: ' + id);
 
-        $("[data-role=header]").fixedtoolbar({ tapToggle: false });
+        //$("[data-role=header]").fixedtoolbar({ tapToggle: false });
     }
 };

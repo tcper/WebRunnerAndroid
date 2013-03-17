@@ -29,12 +29,12 @@
 
         <style type="text/css">
             .fullScreen {
-                padding: 0px;
-                margin: 0px;
+                margin-top: 20px;
                 border: 0px;
                 width: 100%;
                 height: 100%;
             }
+
         </style>
     </head>
     <body>
@@ -46,7 +46,7 @@
              <a href="javascript:scanQR();" data-role="button" data-theme="b" data-inline="true">Scan</a>
              <a href="javascript:refreshFrame();" data-role="button" data-theme="b" data-inline="true">Refresh</a></div>
         </div>
-        <div id="content" class="fullScreen">
+        <div data-role="content" id="content" class="fullScreen">
             <iframe class="fullScreen" src="http://www.baidu.com" id="iframeContent"></iframe>
         </div>
         <script type="text/javascript" src="cordova-2.5.0.js"></script>
